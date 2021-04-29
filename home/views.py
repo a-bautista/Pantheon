@@ -5,10 +5,10 @@ import requests
 # main URL from the API
 URL = "http://reminiscent-steady-albertosaurus.glitch.me/"
 
-def index(request):
+def madlib(request):
     if request.method == 'GET':
         try:
-            template_name = 'home/index.html'
+            template_name = 'home/madlib.html'
             
             noun   = str(URL)+'noun'
             verb   = str(URL)+'verb'

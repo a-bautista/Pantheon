@@ -1,8 +1,11 @@
+.env
+
 # virtual environments
 venv/
 
 # Cache
-madlibs/__pycache__
+madlibs/__pycache__/
+home/__pycache__/
 
 # IDE generated folders
 .idea/

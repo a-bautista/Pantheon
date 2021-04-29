@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import (index)
+from home.views import (madlib)
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('madlib/', madlib, name='madlib'),
     path('admin/', admin.site.urls),
 ]
