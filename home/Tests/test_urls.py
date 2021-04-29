@@ -1,7 +1,8 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from home.views import madlib
-import requests, re
+import requests
+from rest_framework import status
 
 class TestUrls(SimpleTestCase):
 
@@ -11,16 +12,11 @@ class TestUrls(SimpleTestCase):
 
     def test_api_url(self):
         url = "http://reminiscent-steady-albertosaurus.glitch.me/"
-        noun   = str(url)+'noun'
-        verb   = str(url)+'verb'
-        adjective = str(url)+'adjective'
+        nounR   = requests.get(str(url)+'noun')
+        verbR   = requests.get(str(url)+'verb')
+        adjectiveR = requests.get(str(url)+'adjective')
 
-        responseNoun = re.search(r'\b200\b', str(requests.get(noun)))
-        responseVerb = re.search(r'\b200\b', str(requests.get(verb)))
-        responseAdjective = re.search(r'\b200\b', str(requests.get(adjective)))
-
-        if responseAdjective and responseNoun and responseVerb:
-            responseAPI = "OK"
-
-        self.assertEquals(responseAPI, "OK")
-
+        self.assertEquals(nounR.status_code, status.HTTP_200_OK)
+        self.assertEquals(verbR.status_code, status.HTTP_200_OK)
+        self.assertEquals(adjectiveR.status_code, status.HTTP_200_OK)
+        
