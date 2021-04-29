@@ -1,0 +1,89 @@
+{% block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="Pantheon Coding Exercise">
+    <meta content="" name="Alejandro B. Ramos">
+    <title>Madlibs</title>
+    
+    <!-- Load the CSS files -->
+      
+      <!-- Bootstrap core CSS -->
+      <link href="{% static 'home/css/bootstrap.css' %}" type="text/css" rel="stylesheet" />
+
+      <!--<link href="{% static 'home/css/all.min.css' %}" rel="stylesheet">-->
+      <!-- <link href="{% static 'home/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css"> -->
+
+      <!-- Custom fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+      <!-- Custom styles for this template -->
+      <!-- <link href="{% static 'home/css/landing-page.css' %}" rel="stylesheet"> -->
+  
+  </head>
+
+  <!--Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!--Make the bg-dark to #000-->
+    <div class="container">
+      <a class="navbar-brand" href="/">Madlibs</a> 
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          </li>					
+        </ul>
+      </div>
+    </div>
+    </nav>
+    <!-- Navigation -->
+
+<body>
+
+<!-- Masthead -->
+<header class="masthead text-white text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <br /><br /><br />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Showcases -->
+<section class="showcase">
+  <div>
+  <h2>
+    {% for word in sentence %}
+      {% if word == "<noun>" %}
+        <b>{{ noun}}</b>
+      {% elif word == "<verb>" %}
+        <b>{{ verb }}</b>
+      {% elif word == "<adjective>" %}
+        <b>{{ adjective }}</b>
+      {% else %}
+        {{ word }}
+      {% endif %}  
+    {% endfor %}
+  </h2>
+  </div>
+</section>
+  
+</body>
+
+<!-- Footer -->
+<footer class="footer bg-footer">
+    <div class="container">
+      <div class="row">  
+      </div>
+    </div>
+  </footer>
+</html>
+
+{% endblock %}

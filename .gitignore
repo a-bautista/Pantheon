@@ -1,0 +1,9 @@
+# virtual environments
+venv/
+
+# Cache
+madlibs/__pycache__
+
+# IDE generated folders
+.idea/
+.vscode
