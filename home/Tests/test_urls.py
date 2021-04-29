@@ -1,10 +1,10 @@
-from django.test import SimpleTestCase
+from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from home.views import madlib
 import requests
 from rest_framework import status
 
-class TestUrls(SimpleTestCase):
+class TestUrls(TestCase):
 
     def test_list_url_is_resolved(self):
         url = reverse('madlib')
@@ -20,3 +20,8 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(verbR.status_code, status.HTTP_200_OK)
         self.assertEquals(adjectiveR.status_code, status.HTTP_200_OK)
         
+    def test_madlib_view(self):
+        client = Client()
+        response = client.get(reverse('madlib'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home/madlib.html')
